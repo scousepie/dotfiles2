@@ -11,13 +11,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+source ~/.zsh/functions/venv-autodetect.sh
+
 # Prompt configuration
 # virtual environment prompt setup
 function virtual_env_prompt () {
 	REPLY=${VIRTUAL_ENV+[${VIRTUAL_ENV:t}]}
 }
 
-grml_theme_add_token virtual-env -f virtual_env_prompt '%F{green}' '%f'
+grml_theme_add_token virtual-env -f virtual_env_prompt '%F{001}' '%f'
 
 zstyle ':prompt:grml:left:items:host' pre '%B%F{070}'
 zstyle ':prompt:grml:left:items:path' pre '%B%F{240}'
@@ -35,5 +37,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 	[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 	eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles2/ --work-tree=$HOME'
+alias mkvenv='python -m venv venv && cd .. && cd -'
