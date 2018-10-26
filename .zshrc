@@ -27,9 +27,9 @@ zstyle ':prompt:grml:left:setup' items rc change-root host path newline virtual-
 zstyle ':prompt:grml:right:setup' items vcs
 
 # python required lines for setting virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/PythonProjects
-source /usr/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/PythonProjects
+#source /usr/bin/virtualenvwrapper.sh
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
