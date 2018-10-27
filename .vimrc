@@ -101,6 +101,11 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 syntax on
 
+" set popup menu colors
+highlight Pmenu ctermfg=250 ctermbg=234
+highlight Pmenusel ctermfg=250 ctermbg=240
+
+
 " Fix for dimming out inactive pane in tmux
 " comment out below line if not using tmux
 autocmd ColorScheme * highlight! Normal ctermfg=none
