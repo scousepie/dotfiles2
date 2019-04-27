@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/.zsh/functions/venv-autodetect.sh
+source ~/.zsh/functions/*
 
 # Prompt configuration
 # virtual environment prompt setup
