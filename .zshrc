@@ -37,5 +37,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 	[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
 	eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles2/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias mkvenv='python -m venv venv && cd .. && cd -'
