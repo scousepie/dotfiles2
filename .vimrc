@@ -44,25 +44,47 @@ call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'chriskempson/base16-vim'
-Plug 'dracula/vim'
-Plug 'jacoborus/tender.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'lifepillar/vim-cheat40'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'sheerun/vim-polyglot'
+"Plug 'chriskempson/base16-vim'
 Plug 'matze/vim-move'
 Plug 'w0rp/ale'
-
+Plug 'maralla/completor.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
-Plug 'plytophogy/vim-virtualenv'
-Plug 'christoomey/vim-tmux-Navigator'
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+"Plug 'NLKNguyen/papercolor-theme'
+"Plug 'dracula/vim'
+"Plug 'jacoborus/tender.vim'
+"Plug 'arcticicestudio/nord-vim'
+"Plug 'lifepillar/vim-cheat40'
+"
+"Plug 'plytophogy/vim-virtualenv'
+"Plug 'christoomey/vim-tmux-Navigator'
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
 "Plug 'prabirshrestha/asyncomplete.vim'
 "Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " List ends here. Plugins become visible to vim after this call.
 call plug#end()
+
+" Ale
+" set to 1 to turn on 
+" Enable completion where available
+"let g:ale_completion_enabled = 1
+
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {
+            \ 'python': [
+            \ 'isort',
+            \ 'yapf',
+            \ 'remove_trailing_lines',
+            \ 'trim_whitespace'],
+            \}
+
+" Jedi
+let g:jedi#completions_enabled = 1
 "}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -81,11 +103,15 @@ call plug#end()
 "{{{ ==> General
 
 let mapleader=","                         " change the leader to be a comma
-
+set ruler
 set background=dark
 set number
 set t_Co=256
+set scrolloff=5
 "colorscheme nord
+
+" set PEP 8 indentation
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent 
 
 filetype plugin indent on
 
@@ -105,6 +131,7 @@ syntax on
 highlight Pmenu ctermfg=250 ctermbg=234
 highlight Pmenusel ctermfg=250 ctermbg=240
 
+let &colorcolumn="80,120"
 
 " Fix for dimming out inactive pane in tmux
 " comment out below line if not using tmux
@@ -129,6 +156,7 @@ map <C-l> <C-W>l
 " happen as if in command mode )
 imap <C-W> <C-O><C-W>
 
+
 "}}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -149,7 +177,10 @@ nnoremap <leader>ve :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Quick close preview window
-nnoremap <leader>z C-W>z
+nnoremap <leader>z <C-W>q
+
+" command for quick directory change
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 
 "}}}
